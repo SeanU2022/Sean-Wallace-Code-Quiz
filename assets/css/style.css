@@ -1,0 +1,57 @@
+/* pseudo class root to set colours */
+:root {
+  --page-text: black;
+  --page-background: white;
+  --button-color: purple;
+  /* --button-quiz: blue; */
+  --button-text: white;
+}
+
+html {
+  /* set 1rem to 10px instead of native 16px to make it easier to calculate font-size values for the rest of the page (e.g. 1.6rem is 16px, 2.0rem is 20px, etc.) */
+  font-size: 62.5%;
+}
+
+body {
+  /* Sans Serif font stack is implemented to help select the best font for each type of computer operating system */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+
+  /* set body font size to 1.75rem, which is 1.75x more than the font-size of 10px, making it 17.5px  */
+  font-size: 1.75rem;
+  line-height: 1.5;
+  color: var(--page-text);
+  background-color: var(--page-background);
+}
+
+header {
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+main {
+  display: block;
+  text-align: center;
+  align-items: center;
+}
+
+#quiz-introduction {
+  width: 55rem;
+  margin: 2rem auto;  /* auto needed for align-items: center to work */
+}
+
+.button {
+  color: var(--button-text);
+  background-color: var(--button-color);
+  padding: 0.1rem 0.5rem;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+footer {
+  margin: 1.5rem;
+  text-align: center;
+}
