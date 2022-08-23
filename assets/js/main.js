@@ -1,16 +1,25 @@
-// import './elements';
 
-// var tagH1 = document.createElement("h1");
-// tagH1.textContent = "Coding Quiz Challenge";
-// document.body.appendChild(tagH1);
-
-
-
-// logic
-var startBtn = document.querySelector('#start-button');
-var submitBtn = document.getElementById('submit-button');
+// main elements get removed once Start Quiz is clicked
 var tagH1 = document.getElementById('h1');
 var tagQuizIntroduction = document.getElementById('quiz-introduction');
+var startBtn = document.querySelector('#start-button');
+
+var sectionQuizDiv = document.getElementById('quiz-div');
+
+// unlike header elements in flex this main display is block so styles can be applied
+var sectionAllDone = document.getElementById('all-done');
+// sectionAllDone.children[0].style.color = 'red';
+// sectionAllDone.children[1].style.color = 'green';
+// sectionAllDone.children[2].style.color = 'blue';
+sectionAllDone.children[3].style.color = 'yellow';
+
+var submitBtn = document.getElementById('submit-button');
+
+var sectionAllDoneElementCount = 5;     // h2, p, label, input, button
+for (let index = 0; index < sectionAllDoneElementCount; index++) {
+    // sectionAllDone.children[index].style.visibility = 'hidden';
+}
+
 
 
 // on START start timer
@@ -49,4 +58,9 @@ startBtn.addEventListener('click', function() {
     tagQuizIntroduction.remove();
     startBtn.remove();  // the event stays fired even though its source is taken away; this also stops user clicking more than once
     countdown();
+    quiz();
+    quiz();
+    quiz();
+    quiz();
+    quiz();
 });
