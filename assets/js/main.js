@@ -1,3 +1,10 @@
+// global variables for the overall state of things
+var userScore = 0;
+var secondsCountdown = 20;
+var currentQuiz = 0;
+
+
+// elements referenced in the script
 
 // main elements get removed once Start Quiz is clicked
 var tagH1 = document.getElementById('h1');
@@ -23,7 +30,7 @@ for (let index = 0; index < sectionAllDoneElementCount; index++) {
 
 
 // on START start timer
-var secondsCountdown = 5;
+
 
 var timerEl = document.getElementById('countdown');
 
@@ -37,10 +44,10 @@ function countdown() {
     var timeInterval = setInterval(function () {
         console.log(secondsRemaining);
         if (secondsRemaining >= 1) {
-            timerEl.textContent = 'Time: ' + secondsRemaining;
+            timerEl.textContent = secondsRemaining;
         } else if (secondsRemaining === 0) {
             console.log(secondsRemaining);
-            timerEl.textContent = 'Times Up!';
+            timerEl.textContent = "Time's Up!";
             // stop the timer
             clearInterval(timeInterval);
             return;
@@ -58,5 +65,5 @@ startBtn.addEventListener('click', function() {
     tagQuizIntroduction.remove();
     startBtn.remove();  // the event stays fired even though its source is taken away; this also stops user clicking more than once
     countdown();
-    quiz();
+    quiz(currentQuiz);
 });

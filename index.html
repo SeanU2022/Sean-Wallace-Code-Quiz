@@ -12,24 +12,21 @@
 <body>
   <header>
     <a href="./highscores.html" alt="Highscores">View Highscores</a>
-    <span id="countdown">Time: 0</span>
+
+    <div>Time: <span id="countdown">0</span></div>
   </header>
+  
   <main>
     <h1 id="h1">Coding Quiz Challenge</h1>
       <p id="quiz-introduction">
-        <strong>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalise your score/time by 10 seconds.
+        <strong>Try to answer the following code-related questions within the time limit. 
+          Keep in mind that incorrect answers will penalise your score/time by 10 seconds.
         </strong>
       </p>  
     <button type="button" class="button" id="start-button">Start Quiz</button>
     
     <div class="quiz-wrapper">
-      <div class="quiz-columns">
-        <div class="quiz-column-left"></div>
-        <div class="quiz-column-center">
-          <div id="quiz-div">quiz goes here</div>
-        </div>
-        <div class="quiz-column-right"></div>
-      </div>
+      <div id="quiz-div">quiz goes here</div>
     </div>
 
     <!-- <section id="all-done">

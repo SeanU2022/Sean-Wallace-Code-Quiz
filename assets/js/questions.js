@@ -10,7 +10,7 @@ knowledgeTest.push({ask: "Arrays in JavaScript can be used to store _____.", opt
 knowledgeTest.push({ask: "String values must be enclosed within _____ when being assigned to variables.", optionalAnswers: ["commas", "curly brackets", "quotes", "parentheses"], correctAnswer: "quotes"});
 knowledgeTest.push({ask: "A very useful tool used during development and debugging for printing content to the debugger is:", optionalAnswers: ["JavaScript", "terminal/bash", "for loops", "console log"], correctAnswer: "console log"});
 
-function quiz() {
+function quiz(indexKT) {
     // for each knowledge test: display the question with optional answers appearing below it
 
     var currentQuestion;
@@ -21,8 +21,11 @@ function quiz() {
     // populate index<main><div id="quiz-div"
     // sectionQuizDiv defined in main.js
 // for (let indexKT = 0; indexKT < knowledgeTest.length; indexKT++) {
-var indexKT = 0
-        
+
+
+// var indexKT = 0
+
+
         currentQuestion = document.createElement('p');
         currentQuestion.innerHTML = knowledgeTest[indexKT].ask;
         sectionQuizDiv.appendChild(currentQuestion);
@@ -53,11 +56,23 @@ var indexKT = 0
             optionalAnswerButton.setAttribute('id', knowledgeTest[indexKT].optionalAnswers[indexOA]);       // this button will get destroyed after click since it's id is not universally unique
 
             optionalAnswerButton.addEventListener('click', function () {
-                // if (this.textContent === "3. alerts") {
-                // if (this.id === "alerts") {
                 if (this.id === knowledgeTest[indexKT].correctAnswer) {
-                    console.log(this.textContent);
-                    alert(this.textContent + '=>it worked');
+                    // alert(this.textContent + '=>it worked');
+                    userScore++;
+                    console.log(this.textContent + '=>it worked score: ' + userScore);
+                } else {
+                    console.log(this.textContent + '=>it worked user faiiled: ' + userScore);
+                }
+                currentQuestion.remove();
+                optionalAnswersDiv.remove();
+                // next question
+                currentQuiz++;
+                if (currentQuiz <= knowledgeTest.length) {
+                    quiz(currentQuiz);
+                } else {
+                    console.log('finished');
+                    alert('end of the end');
+                    return;
                 }
             })
         }
