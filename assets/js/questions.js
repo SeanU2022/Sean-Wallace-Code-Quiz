@@ -11,11 +11,12 @@ knowledgeTest.push({ask: "String values must be enclosed within _____ when being
 knowledgeTest.push({ask: "A very useful tool used during development and debugging for printing content to the debugger is:", optionalAnswers: ["JavaScript", "terminal/bash", "for loops", "console log"], correctAnswer: "console log"});
 
 function quiz() {
-    // for each knowledge test: display the question with optional answers appearing below
+    // for each knowledge test: display the question with optional answers appearing below it
 
     var currentQuestion;
     var optionalAnswersDiv;
     var optionalAnswerButton;
+    var answerFeedback;
 
     // populate index<main><div id="quiz-div"
     // sectionQuizDiv defined in main.js
@@ -26,6 +27,15 @@ function quiz() {
         sectionQuizDiv.appendChild(currentQuestion);
         currentQuestion.style.fontWeight = 'bold';
         // BOLD ALT METHOD sectionQuizDiv.setAttribute("style", "font-size: 25px; font-weight: bold; text-decoration:underline; ");
+        currentQuestion.style.textAlign = "left";
+        // visibility hidden/visible takes up space
+        // currentQuestion.style.visibility = "hidden";
+        // display hides and removes element
+        // currentQuestion.style.display = "none";
+
+
+        // text-align: center;
+
         
         optionalAnswersDiv = document.createElement('div');
         sectionQuizDiv.appendChild(optionalAnswersDiv);
@@ -37,6 +47,13 @@ function quiz() {
 
             optionalAnswerButton.setAttribute('class', 'button');      // THIS WORKS
             // currentButton.style.class = 'button';            // THIS DOES NOT WORK
+            // optionalAnswerButton.style = 'button';            // THIS DOES NOT WORK
+            // optionalAnswerButton.style.class = 'button';            // THIS DOES NOT WORK
         }
+
+        answerFeedback = document.createElement('p');
+        answerFeedback.setAttribute('class', 'answer-feedback');
+        answerFeedback.textContent = "Correct!"
+        sectionQuizDiv.appendChild(answerFeedback);
     }
 }

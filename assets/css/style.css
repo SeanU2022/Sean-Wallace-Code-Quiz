@@ -42,9 +42,29 @@ main {
   margin: 2rem auto;  /* auto needed for align-items: center to work */
 }
 
+/* the quiz is displayed inside a flex box */
+.quiz-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.quiz-columns {
+  display: flex;
+}
+#quiz-column-left {
+  width: 25%;
+}
+#quiz-column-center {
+  width: 50%;
+}
+#quiz-column-right {
+  width: 25%;
+}
 #quiz-div {
-  padding-left: 25%;
-  width: 75%;
+  padding: 0%;
+  margin: 0%;
+  padding-left: 50%;
+  width: 100%;
 }
 
 #quiz-div div {
@@ -61,6 +81,21 @@ main {
   border-radius: 5px;
   letter-spacing: 1px;
   cursor: pointer;
+}
+
+.answer-feedback {
+  /* display: inline-block; */
+  /* width: max-content; */
+  text-align: left;
+  font-style: italic;
+  color: grey;
+  margin-top: 10px;
+  padding: 10px 0px;
+  border-color: gray;
+  border: 2px solid;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 0px;
 }
 
 footer {

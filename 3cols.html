@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+      .god {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+
+      /* the important styles */
+      .parent {
+        display: flex; /* children will use flex styles */
+      }
+
+      .stretchy {
+        flex-grow: 1; /* grow wider by any factor */
+        flex-shrink: 1; /* grow smaller by any factor */
+        
+        /* auto-compute initial width */
+        /* flex-basis: auto;  */
+        flex-basis: 33%;
+        /* shorthand for above styles */
+        /* flex: 1 1 auto; */
+      }
+
+      .stretchyLR {
+        /* left 25% center 50% right 25% */
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 25%;
+      }
+
+      .stretchyC {
+        /* left 25% center 50% right 25% */
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 50%;
+      }
+
+      /* RESPONSIVE */
+      /* Tablets */
+      @media screen and (max-width: 992px) {
+        .fixed {
+          background-color: orange;
+          flex-basis: 300px;
+          flex: 0 0 300px;
+        }
+      }
+
+      /* Large smartphones */
+      @media screen and (max-width: 768px) {
+      .fixed {
+        background-color: orangered;
+        flex-basis: 150px;
+        flex: 0 0 150px;
+        }
+      }
+
+      /* Small smartphones */
+      @media screen and (max-width: 576px) {
+        .fixed {
+        background-color: red;
+        flex-basis: 100px;
+        flex: 0 0 100px;
+        }
+      }
+  </style>
+  <title>3cols!!! SNIPPET</title>
+</head>
+<body>
+  <main class="god">
+
+    <div class="parent">
+      <div class="stretchyLR" style="background-color: pink">
+        <h1>I'm stretchy col 1 row 1</h1>
+        <h3>About Me</h3>
+      </div>
+
+      <div class="stretchyC" style="background-color: aqua;">
+        <h1>I'm stretchy col 2 row 1</h1>
+      </div>
+
+      <div class="stretchyLR" style="background-color: orange">
+        <h1>I'm stretchy col 3 row 1</h1>
+        <h3>About Me</h3>
+      </div>
+    </div>
+
+    <div class="parent">
+      <div class="stretchyLR" style="background-color: palevioletred">
+        <h1>I'm stretchy col 1 row 2</h1>
+        <h3>About Me</h3>
+      </div>
+
+      <div class="stretchyC" style="background-color:aquamarine;">
+        <h1>I'm stretchy col 2 row 2</h1>
+      </div>
+
+      <div class="stretchyLR" style="background-color: orangered">
+        <h1>I'm stretchy col 3 row 2</h1>
+        <h3>About Me</h3>
+      </div>
+
+    </div>
+    
+  </main>
+
+</body>
+</html>
