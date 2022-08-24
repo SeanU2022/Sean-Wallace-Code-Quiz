@@ -4,14 +4,14 @@ var tagH1 = document.getElementById('h1');
 var tagQuizIntroduction = document.getElementById('quiz-introduction');
 var startBtn = document.querySelector('#start-button');
 
-var sectionQuizDiv = document.getElementById('quiz-div');
+var sectionQuizDiv = document.getElementById('quiz-div');   // used in questions.js>quiz()
 
 // unlike header elements in flex this main display is block so styles can be applied
 var sectionAllDone = document.getElementById('all-done');
 // sectionAllDone.children[0].style.color = 'red';
 // sectionAllDone.children[1].style.color = 'green';
 // sectionAllDone.children[2].style.color = 'blue';
-sectionAllDone.children[3].style.color = 'yellow';
+// ERROR WHEN I TAKE OUT ALL-DONE SECTION; sectionAllDone.children[3].style.color = 'yellow';
 
 var submitBtn = document.getElementById('submit-button');
 
@@ -58,9 +58,5 @@ startBtn.addEventListener('click', function() {
     tagQuizIntroduction.remove();
     startBtn.remove();  // the event stays fired even though its source is taken away; this also stops user clicking more than once
     countdown();
-    quiz();
-    quiz();
-    quiz();
-    quiz();
     quiz();
 });
