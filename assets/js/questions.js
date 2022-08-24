@@ -20,10 +20,11 @@ function quiz() {
 
     // populate index<main><div id="quiz-div"
     // sectionQuizDiv defined in main.js
-    for (let indexKT = 0; indexKT < knowledgeTest.length; indexKT++) {
+// for (let indexKT = 0; indexKT < knowledgeTest.length; indexKT++) {
+var indexKT = 0
         
         currentQuestion = document.createElement('p');
-        currentQuestion.innerHTML = (indexKT+1).toString() + '. ' + knowledgeTest[indexKT].ask;
+        currentQuestion.innerHTML = knowledgeTest[indexKT].ask;
         sectionQuizDiv.appendChild(currentQuestion);
         currentQuestion.style.fontWeight = 'bold';
         // BOLD ALT METHOD sectionQuizDiv.setAttribute("style", "font-size: 25px; font-weight: bold; text-decoration:underline; ");
@@ -49,11 +50,21 @@ function quiz() {
             // currentButton.style.class = 'button';            // THIS DOES NOT WORK
             // optionalAnswerButton.style = 'button';            // THIS DOES NOT WORK
             // optionalAnswerButton.style.class = 'button';            // THIS DOES NOT WORK
+            optionalAnswerButton.setAttribute('id', knowledgeTest[indexKT].optionalAnswers[indexOA]);       // this button will get destroyed after click since it's id is not universally unique
+
+            optionalAnswerButton.addEventListener('click', function () {
+                // if (this.textContent === "3. alerts") {
+                // if (this.id === "alerts") {
+                if (this.id === knowledgeTest[indexKT].correctAnswer) {
+                    console.log(this.textContent);
+                    alert(this.textContent + '=>it worked');
+                }
+            })
         }
 
         answerFeedback = document.createElement('p');
         answerFeedback.setAttribute('class', 'answer-feedback');
         answerFeedback.textContent = "Correct!"
         sectionQuizDiv.appendChild(answerFeedback);
-    }
+// }
 }
