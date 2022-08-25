@@ -26,14 +26,23 @@ var sectionQuizDiv = document.getElementById('quiz-div');   // used in questions
     var optionalAnswersDiv;
     var optionalAnswerButton;
 
+    // after quiz submit form
+    var sectionAllDone = document.getElementById('all-done');
+    var allDoneH2 = document.getElementById('after-quiz-h2');  
+    var allDoneP = document.getElementById('after-quiz-p');
+    var allDoneL = document.getElementById('after-quiz-label');
+    var allDoneInitials = document.getElementById('initials');
+    var allDoneSubmitBtn = document.getElementById('submit-button');
+
+
 // unlike header elements in flex this main display is block so styles can be applied
-var sectionAllDone = document.getElementById('all-done');
+
 // sectionAllDone.children[0].style.color = 'red';
 // sectionAllDone.children[1].style.color = 'green';
 // sectionAllDone.children[2].style.color = 'blue';
 // ERROR WHEN I TAKE OUT ALL-DONE SECTION; sectionAllDone.children[3].style.color = 'yellow';
 
-var submitBtn = document.getElementById('submit-button');
+// var submitBtn = document.getElementById('submit-button');
 
 function countdown() {
     countdownClock = setInterval(function () {
@@ -70,19 +79,20 @@ function endQuiz() {
     quizFeedback.textContent = '';
     
     // show final form section with submit button
-    var allDoneH2 = document.getElementById("after-quiz-h2");  
-    var allDoneP = document.getElementById('after-quiz-p');
-    var allDoneL = document.getElementById('after-quiz-label');
-    var allDoneI = document.getElementById('after-quiz-input');
-    var allDoneB = document.getElementById('after-quiz-button');
+
 
     allDoneP.textContent = 'Your final score is: ' + userScore;
 
-    allDoneH2.setAttribute("style", "visibility: visible;");
-    allDoneP.setAttribute("style", "visibility: visible;");
-    allDoneL.setAttribute("style", "visibility: visible;"); 
-    allDoneI.setAttribute("style", "visibility: visible;"); 
-    allDoneB.setAttribute("style", "visibility: visible;");
+    allDoneH2.setAttribute('style', 'visibility: visible;');
+    allDoneP.setAttribute('style', 'visibility: visible;');
+    allDoneL.setAttribute('style', 'visibility: visible;'); 
+    allDoneInitials.setAttribute('style', 'visibility: visible;'); 
+    allDoneSubmitBtn.setAttribute('style', 'visibility: visible;');
+
+
+    // localStorage.setItem("email", email);
+    // localStorage.setItem("password", password);
+
 
     console.log('finished');
 }
@@ -98,7 +108,42 @@ function endQuiz() {
 // });
 
 // v2
-startBtn.addEventListener('click', function() {
+startBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+    event.stopPropagation;
     startQuiz();
     doQuiz(currentKnowledgeTest);
 });
+
+allDoneSubmitBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+    event.stopPropagation;
+
+    var userInitials = document.querySelector('#initials').value;
+
+
+    // if (allDoneInitials.textContent === '') {
+    if (userInitials === '') {
+        alert('Please enter your initials')
+    } else {
+        alert('your name is:' + userInitials )
+    }
+});
+
+// signUpButton.addEventListener("click", function(event) {
+//     event.preventDefault();
+  
+//     var email = document.querySelector("#email").value;
+//     var password = document.querySelector("#password").value;
+  
+//     if (email === "") {
+//       displayMessage("error", "Email cannot be blank");
+//     } else if (password === "") {
+//       displayMessage("error", "Password cannot be blank");
+//     } else {
+//       displayMessage("success", "Registered successfully");
+  
+//     localStorage.setItem("email", email);
+//     localStorage.setItem("password", password);
+//     }
+//   });

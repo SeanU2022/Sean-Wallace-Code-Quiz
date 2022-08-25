@@ -14,10 +14,6 @@ knowledgeTest.push({ask: "Good programming means:", optionalAnswers: ["it's fast
 function doQuiz(index) {
     // for each knowledge test: display the question with optional answers appearing below it
 
-
-
-
-
     // display current knowledge test question
     currentQuestion.innerHTML = knowledgeTest[index].ask;
     currentQuestion.style.fontWeight = 'bold';
@@ -43,7 +39,9 @@ function doQuiz(index) {
         optionalAnswerButton.setAttribute('id', knowledgeTest[index].optionalAnswers[indexOA]);       // this button will get destroyed after click since it's id is not universally unique
 
         // any answer button clicked updates score and starts next Knowledge Test
-        optionalAnswerButton.addEventListener('click', function () {
+        optionalAnswerButton.addEventListener('click', function (event) {
+            event.preventDefault;
+            event.stopPropagation;
             if (this.id === knowledgeTest[index].correctAnswer) {
                 userScore++;
                 quizFeedback.textContent = "Last answer was correct! score is: " + userScore
