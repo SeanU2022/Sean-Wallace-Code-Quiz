@@ -1,12 +1,14 @@
 // global variables for the overall state of things
 var userScore = 0;
 var secondsCountdown = 20;
-var currentQuiz = 0;
+var currentKnowledgeTest = 0;
+var currentFeedback = '';
 
 
 // elements referenced in the script
 
 // main elements get removed once Start Quiz is clicked
+// DOM object pointers
 var tagH1 = document.getElementById('h1');
 var tagQuizIntroduction = document.getElementById('quiz-introduction');
 var startBtn = document.querySelector('#start-button');
@@ -65,5 +67,12 @@ startBtn.addEventListener('click', function() {
     tagQuizIntroduction.remove();
     startBtn.remove();  // the event stays fired even though its source is taken away; this also stops user clicking more than once
     countdown();
-    quiz(currentQuiz);
+    doQuiz(currentKnowledgeTest);
 });
+
+
+function endQuiz() {
+    // clearInterval(timeInterval);
+    console.log('finished');
+    alert('end of the end');
+}
