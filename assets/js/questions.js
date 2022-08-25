@@ -40,8 +40,8 @@ function doQuiz(index) {
 
         // any answer button clicked updates score and starts next Knowledge Test
         optionalAnswerButton.addEventListener('click', function (event) {
-            event.preventDefault;
-            event.stopPropagation;
+            event.preventDefault();
+            event.stopPropagation();
             if (this.id === knowledgeTest[index].correctAnswer) {
                 userScore++;
                 quizFeedback.textContent = "Last answer was correct! score is: " + userScore
