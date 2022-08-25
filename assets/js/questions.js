@@ -1,6 +1,6 @@
-// the quiz contains 5 knowledge tests
+// the quiz contains X knowledge tests
 // each test asks a questions
-// each test has four optional answers
+// each test has Y optional answers
 // each test has one correct answer
 
 var knowledgeTest = [];
@@ -10,58 +10,3 @@ knowledgeTest.push({ask: "Arrays in JavaScript can be used to store _____.", opt
 knowledgeTest.push({ask: "String values must be enclosed within _____ when being assigned to variables.", optionalAnswers: ["commas", "curly brackets", "quotes", "parentheses"], correctAnswer: "quotes"});
 knowledgeTest.push({ask: "A very useful tool used during development and debugging for printing content to the debugger is:", optionalAnswers: ["JavaScript", "terminal/bash", "for loops", "console log"], correctAnswer: "console log"});
 knowledgeTest.push({ask: "Good programming means:", optionalAnswers: ["it's fast", "the code is finished within 1 hour", "do not use for loops", "it meets requirements", "meets requirements and is maintainable", "I don't know"], correctAnswer: "meets requirements and is maintainable"});
-
-function doQuiz(index) {
-    // for each knowledge test: display the question with optional answers appearing below it
-
-    // display current knowledge test question
-    currentQuestion.innerHTML = knowledgeTest[index].ask;
-    currentQuestion.style.fontWeight = 'bold';
-    currentQuestion.style.textAlign = "left";
-    // A visibility hidden/visible takes up space
-    // A currentQuestion.style.visibility = "hidden";
-    // A display hides and removes element
-    // A currentQuestion.style.display = "none";
-
-    // generate the optional answers for the knowledge test question
-    optionalAnswersDiv = document.createElement('div');
-    sectionQuizDiv.appendChild(optionalAnswersDiv);
-
-    for (let indexOA = 0; indexOA < knowledgeTest[index].optionalAnswers.length; indexOA++) {
-        optionalAnswerButton = document.createElement('button');
-        optionalAnswerButton.innerHTML = (indexOA+1).toString() + '. ' + knowledgeTest[index].optionalAnswers[indexOA];
-        optionalAnswersDiv.appendChild(optionalAnswerButton);
-
-        optionalAnswerButton.setAttribute('class', 'button');      // THIS WORKS
-        // currentButton.style.class = 'button';            // THIS DOES NOT WORK
-        // optionalAnswerButton.style = 'button';            // THIS DOES NOT WORK
-        // optionalAnswerButton.style.class = 'button';            // THIS DOES NOT WORK
-        optionalAnswerButton.setAttribute('id', knowledgeTest[index].optionalAnswers[indexOA]);       // this button will get destroyed after click since it's id is not universally unique
-
-        // any answer button clicked updates score and starts next Knowledge Test
-        optionalAnswerButton.addEventListener('click', function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-            if (this.id === knowledgeTest[index].correctAnswer) {
-                userScore++;
-                quizFeedback.textContent = "Last answer was correct! score is: " + userScore
-            } else {
-                // TO DO -10 seconds
-                // secondsRemaining+=-10; 
-                quizFeedback.textContent =  "Last answer was wrong! score is: " + userScore
-            }
-            // clean up the page: remove current question and optional answers
-            currentQuestion.innerHTML = '';
-            optionalAnswersDiv.remove();
-
-            // point to next global question
-            currentKnowledgeTest++;
-            if (currentKnowledgeTest < knowledgeTest.length) {
-                doQuiz(currentKnowledgeTest);                          // recursive function call
-            } else {
-                endQuiz();
-            }
-            return                                          // always return on click
-        })
-    }
-}

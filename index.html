@@ -13,26 +13,26 @@
   <header>
     <a href="./quizscores.html" alt="Quiz Scores">View Quiz scores</a>
 
-    <!-- <div>Time: <span id="countdown">0</span></div> -->
     <div>Time Remaining: <span id="countdown">0</span></div>
   </header>
 
   <main>
     <h1 id="h1">Coding Quiz Challenge</h1>
       <p id="quiz-introduction">
-        <strong>Try to answer the following code-related questions within the time limit. 
-          Keep in mind that incorrect answers will penalise your score/time by 10 seconds.
+        <strong>You will get 6 questions in 60 seconds.  Try to answer the following code-related questions within the time limit. 
+          Keep in mind that incorrect answers will penalise your score/time by 10 seconds. Your final score is 
+          the tally * 10 seconds plus any time remaining. Good Luck!
         </strong>
       </p>  
     <button type="button" class="button" id="start-button">Start Quiz</button>
     
     <div class="quiz-wrapper">
       <h2 id="quiz-question"></h2>
-      <div id="quiz-div">quiz goes here</div>
+      <div id="quiz-div"></div>
       <!-- buttons for optional answers to be appended here -->
     </div>
 
-    <div id="quiz-feedback">feedback</div>
+    <div id="quiz-feedback"></div>
 
     <section class="after-quiz-visible" id="all-done">
       <h2 class="after-quiz-visible" id="after-quiz-h2">All done!</h2>
@@ -41,12 +41,11 @@
       <input class="after-quiz-visible" id="initials" type="text" name="initials" aria-label="initial" label="initial">
       <button class="after-quiz-visible button" id="submit-button" type="button">Submit</button>
     </section>
-  </main>
 
-  <footer>FOOTER</footer>
-  <!-- <script type="text/javascript" src="./assets/js/elements.js"></script> -->
+    </div>
+
+  </main>
   <script type="text/javascript" src="./assets/js/questions.js"></script>
   <script type="text/javascript" src="./assets/js/main.js"></script>
-  <script type="text/javascript" src="./assets/js/quizscores.js"></script>
 </body>
 </html>

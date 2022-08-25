@@ -1,69 +1,9 @@
 // stores quiz scores and retireves scores with highest rendered to the top
 
-// localStorage.getItem('highscores');
-// localStorage.getItem('user', JSON.parse(user));
-
-
 // DOM object pointers
-var quizListEl = document.getElementById('quiz-scores');
+var clearScoresBtn = window.document.getElementById('clear-highscores-button');
 
-
-function saveScore(userInitials, userScore) {
-    // scope local over global
-    if (userInitials==='') {
-        console.log('saveScore error');
-        return;
-    }
-
-    // retrieve saved scores into array or create empty array if none saved yet
-    var quizScores = JSON.parse(window.localStorage.getItem('quizScores')) || [];
-
-    // inputs go into local object
-    var personsScore = {
-        initials: userInitials,
-        score: userScore
-    };
-
-    // push object into array
-    quizScores.push(personsScore);
-
-    // localStorage.setItem(personsScore.initials, JSON.stringify(personsScore));
-    
-    // put updated data back into the local store
-    window.localStorage.setItem('quizScores', JSON.stringify(quizScores));
-
-    // jump to the scores page
-    window.location.href = "quizscores.html"
-
-
-    console.log('save score');
-};
-
-
-
-
-// var studentGrade = {
-//     student: student.value,
-//     grade: grade.value,
-//     comment: comment.value.trim()
-//   };
-  
-//   localStorage.setItem("studentGrade", JSON.stringify(studentGrade));
-//   renderMessage();
-  
-  
-//   });
-  
-//   function renderMessage() {
-//     var lastGrade = JSON.parse(localStorage.getItem("studentGrade"));
-//     if (lastGrade !== null) {
-//       document.querySelector(".message").textContent = lastGrade.student + 
-//       " received a/an " + lastGrade.grade
-//     }
-//   }
-
-
-function renderScores(params) {
+function renderScores() {
     console.log('highscores first');
 
     // retrieve saved scores into array or create empty array if none saved yet
@@ -74,24 +14,37 @@ function renderScores(params) {
         return b.score - a.score
     });
 
-var myMainEl = document.getElementById('mymain');
-var mytest = document.createElement('p');
-mytest.textContent = 'hello';
-myMainEl.appendChild(mytest);
-
+    // build ordered list of scores and show
+    var olEl = document.getElementById("quiz-scores");
     for (let index = 0; index < quizScores.length; index++) {
-
         var liEl = document.createElement('li');
-        // liEl.textContent = quizScores[index].initials + '- ' + quizScores[index].score;
-        liEl.textContent = 'geeee';
-
-        quizListEl.appendChild(liEl);
-        
+        liEl.textContent = quizScores[index].initials + '- ' + quizScores[index].score;
+        olEl.appendChild(liEl);
     }
 
 }
 
-function clearScores(params) {
+function clearScores() {
+    window.localStorage.removeItem('quizScores');
+    window.location.reload()
     console.log('clear scores');
     
 }
+
+window.onload = init;
+
+function init(){
+    // the code to be called when the dom has loaded
+    renderScores();
+}
+
+// empty the local store database
+clearScoresBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    if (confirm("This will erase all scores! Are you sure?")) {
+        clearScores();
+    }
+});
+
+

@@ -26,10 +26,14 @@ WHEN all questions are answered or the timer reaches 0
 THEN the game is over
 WHEN the game is over
 THEN I can save my initials and my score
+EXTRA WHEN I click on View Quiz scores
+EXTRA THEN I see the list of scores from the Highest
 ```
 
 ## Mock-Up
 
 The following animation demonstrates the application functionality:
 
-![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./Assets/04-web-apis-homework-demo.gif)
+![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./Assets/Start.png)
+![](./assets/Quiz.png)
+![](./assets/Scores.png)
