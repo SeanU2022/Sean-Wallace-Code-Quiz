@@ -13,7 +13,8 @@
   <header>
     <a href="./highscores.html" alt="Highscores">View Highscores</a>
 
-    <div>Time: <span id="countdown">0</span></div>
+    <!-- <div>Time: <span id="countdown">0</span></div> -->
+    <div>Time Remaining: <span id="countdown">0</span></div>
   </header>
 
   <main>
@@ -33,13 +34,13 @@
 
     <div id="quiz-feedback">feedback</div>
 
-    <!-- <section id="all-done">
-      <h2>All done!</h2>
-      <p>Your final score is 22.</p>
-      <label for="your-initials">Enter initials:</label>
-      <input type="text" id="initials" name="initials" aria-label="initial" label="initial">
-      <button type="button" class="button" id="submit-button">Submit</button>
-    </section> -->
+    <section class="after-quiz-visible" id="all-done">
+      <h2 class="after-quiz-visible" id="after-quiz-h2">All done!</h2>
+      <p class="after-quiz-visible" id="after-quiz-p"></p>
+      <label class="after-quiz-visible" id="after-quiz-label" for="your-initials">Enter initials:</label>
+      <input class="after-quiz-visible" id="after-quiz-input" type="text" id="initials" name="initials" aria-label="initial" label="initial">
+      <button class="after-quiz-visible button" id="after-quiz-button" type="button" class="button" id="submit-button">Submit</button>
+    </section>
   </main>
 
   <footer>FOOTER</footer>

@@ -1,19 +1,30 @@
 // global variables for the overall state of things
 var userScore = 0;
-var secondsCountdown = 20;
 var currentKnowledgeTest = 0;
-var currentFeedback = '';
 
+var secondsRemaining = knowledgeTest.length * 20;    // each test has 2 seconds to do!
 
-// elements referenced in the script
+secondsRemaining = 2;
 
-// main elements get removed once Start Quiz is clicked
+var countdownClock;
+
+// var currentFeedback = '';
+
 // DOM object pointers
+var timerEl = document.getElementById('countdown');
 var tagH1 = document.getElementById('h1');
 var tagQuizIntroduction = document.getElementById('quiz-introduction');
 var startBtn = document.querySelector('#start-button');
 
 var sectionQuizDiv = document.getElementById('quiz-div');   // used in questions.js>quiz()
+
+    // DOM object pointers
+    var currentQuestion = document.getElementById('quiz-question');
+    var quizFeedback = document.getElementById('quiz-feedback');
+
+    // variables pointing to created DOM objects
+    var optionalAnswersDiv;
+    var optionalAnswerButton;
 
 // unlike header elements in flex this main display is block so styles can be applied
 var sectionAllDone = document.getElementById('all-done');
@@ -24,55 +35,70 @@ var sectionAllDone = document.getElementById('all-done');
 
 var submitBtn = document.getElementById('submit-button');
 
-var sectionAllDoneElementCount = 5;     // h2, p, label, input, button
-for (let index = 0; index < sectionAllDoneElementCount; index++) {
-    // sectionAllDone.children[index].style.visibility = 'hidden';
-}
-
-
-
-// on START start timer
-
-
-var timerEl = document.getElementById('countdown');
-
 function countdown() {
-// function countdown(event) {
-    var secondsRemaining = secondsCountdown;
-    // event.preventDefault();
-    // event.stopPropagation();
-    // console.log(event);
-
-    var timeInterval = setInterval(function () {
+    countdownClock = setInterval(function () {
         console.log(secondsRemaining);
         if (secondsRemaining >= 1) {
             timerEl.textContent = secondsRemaining;
-        } else if (secondsRemaining === 0) {
-            console.log(secondsRemaining);
+        } else if (secondsRemaining === 0 || secondsRemaining < 0) {
             timerEl.textContent = "Time's Up!";
             // stop the timer
-            clearInterval(timeInterval);
+            endQuiz();
             return;
         } else {
-            clearInterval(timeInterval);
+            endQuiz();
             console.log('error with countdown() timer');
+            return;
         };
         secondsRemaining--;
     }, 1000);
 }
 
-// startBtn.addEventListener('click', countdown);
-startBtn.addEventListener('click', function() {
+function startQuiz() {
     tagH1.remove();
     tagQuizIntroduction.remove();
     startBtn.remove();  // the event stays fired even though its source is taken away; this also stops user clicking more than once
+    // start countdown
     countdown();
-    doQuiz(currentKnowledgeTest);
-});
-
+}
 
 function endQuiz() {
-    // clearInterval(timeInterval);
+    clearInterval(countdownClock);
+    // clean up the page: remove current question, optional answers, feedback
+    currentQuestion.innerHTML = '';
+    optionalAnswersDiv.remove();
+    quizFeedback.textContent = '';
+    
+    // show final form section with submit button
+    var allDoneH2 = document.getElementById("after-quiz-h2");  
+    var allDoneP = document.getElementById('after-quiz-p');
+    var allDoneL = document.getElementById('after-quiz-label');
+    var allDoneI = document.getElementById('after-quiz-input');
+    var allDoneB = document.getElementById('after-quiz-button');
+
+    allDoneP.textContent = 'Your final score is: ' + userScore;
+
+    allDoneH2.setAttribute("style", "visibility: visible;");
+    allDoneP.setAttribute("style", "visibility: visible;");
+    allDoneL.setAttribute("style", "visibility: visible;"); 
+    allDoneI.setAttribute("style", "visibility: visible;"); 
+    allDoneB.setAttribute("style", "visibility: visible;");
+
     console.log('finished');
-    alert('end of the end');
 }
+
+// startBtn.addEventListener('click', countdown);
+
+// startBtn.addEventListener('click', function() {
+//     tagH1.remove();
+//     tagQuizIntroduction.remove();
+//     startBtn.remove();  // the event stays fired even though its source is taken away; this also stops user clicking more than once
+//     countdown();
+//     doQuiz(currentKnowledgeTest);
+// });
+
+// v2
+startBtn.addEventListener('click', function() {
+    startQuiz();
+    doQuiz(currentKnowledgeTest);
+});

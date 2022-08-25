@@ -14,13 +14,9 @@ knowledgeTest.push({ask: "Good programming means:", optionalAnswers: ["it's fast
 function doQuiz(index) {
     // for each knowledge test: display the question with optional answers appearing below it
 
-    // DOM object pointers
-    var currentQuestion = document.getElementById('quiz-question');
-    var quizFeedback = document.getElementById('quiz-feedback');
 
-    // variables pointing to created DOM objects
-    var optionalAnswersDiv;
-    var optionalAnswerButton;
+
+
 
     // display current knowledge test question
     currentQuestion.innerHTML = knowledgeTest[index].ask;
@@ -50,11 +46,14 @@ function doQuiz(index) {
         optionalAnswerButton.addEventListener('click', function () {
             if (this.id === knowledgeTest[index].correctAnswer) {
                 userScore++;
-                quizFeedback.textContent = "You were Correct! score is: " + userScore
-            } else {                    
-                quizFeedback.textContent =  "You were Wrong! score still is: " + userScore
+                quizFeedback.textContent = "Last answer was correct! score is: " + userScore
+            } else {
+                // TO DO -10 seconds
+                // secondsRemaining+=-10; 
+                quizFeedback.textContent =  "Last answer was wrong! score is: " + userScore
             }
-            // clean up the page: remove current question
+            // clean up the page: remove current question and optional answers
+            currentQuestion.innerHTML = '';
             optionalAnswersDiv.remove();
 
             // point to next global question
@@ -62,7 +61,7 @@ function doQuiz(index) {
             if (currentKnowledgeTest < knowledgeTest.length) {
                 doQuiz(currentKnowledgeTest);                          // recursive function call
             } else {
-                endQuiz();  // DOES NOT WORK
+                endQuiz();
             }
             return                                          // always return on click
         })
