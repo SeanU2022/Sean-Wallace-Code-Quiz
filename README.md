@@ -32,8 +32,9 @@ EXTRA THEN I see the list of scores from the Highest
 
 ## Mock-Up
 
-The following animation demonstrates the application functionality:
+The following image shows the application functionality:
 
-![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./Assets/Start.png)
-![](./assets/Quiz.png)
-![](./assets/Scores.png)
+![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./assets/CodingQuizChallengeMockUp.png)
+
+## Deployed Application
+You can play Seanos' Coding Quiz here: https://seanu2022.github.io/Sean-Wallace-Code-Quiz/

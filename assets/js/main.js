@@ -33,7 +33,7 @@ var allDoneSubmitBtn = document.getElementById('submit-button');
 
 function countdown() {
     countdownClock = setInterval(function () {
-        console.log(secondsRemaining);
+        // console.log(secondsRemaining);
         if (secondsRemaining >= 1) {
             timerEl.textContent = secondsRemaining;
         } else if (secondsRemaining === 0 || secondsRemaining < 0) {
@@ -111,6 +111,8 @@ function endQuiz() {
     // stop the clock
     clearInterval(countdownClock);
     finalScore = secondsRemaining+(userScore*10);
+    // add 1 to second so the displayed score fits players mind with time remaining shown
+    finalScore = finalScore + 1;
     
     // clean up the page: remove current question, optional answers, feedback
     currentQuestion.innerHTML = '';
@@ -134,7 +136,6 @@ function saveScore(userInitials, userScore) {
         return;
     }
     
-
     // retrieve saved scores into array or create empty array if none saved yet
     var quizScores = JSON.parse(window.localStorage.getItem('quizScores')) || [];
 
