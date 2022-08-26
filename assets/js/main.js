@@ -14,8 +14,8 @@ var tagH1 = document.getElementById('h1');
 var tagQuizIntroduction = document.getElementById('quiz-introduction');
 var startBtn = document.querySelector('#start-button');
 
-// DOM objects in quiz
-var sectionQuizDiv = document.getElementById('quiz-div');   // used in questions.js>quiz()
+// DOM objects in quiz    // used in doQuiz()
+var sectionQuizDiv = document.getElementById('quiz-div');
 var currentQuestion = document.getElementById('quiz-question');
 var quizFeedback = document.getElementById('quiz-feedback');
 
@@ -66,7 +66,7 @@ function doQuiz(index) {
     currentQuestion.style.fontWeight = 'bold';
     currentQuestion.style.textAlign = "left";
 
-    // generate the optional answers for the knowledge test question, add to sectionDivQuiz created in main.js
+    // generate the optional answers for the knowledge test question, add to sectionQuizDiv pointing to index.html>#quiz-div
     optionalAnswersDiv = document.createElement('div');
     sectionQuizDiv.appendChild(optionalAnswersDiv);
 
@@ -98,7 +98,7 @@ function doQuiz(index) {
             // point to next global question
             currentKnowledgeTest++;
             if (currentKnowledgeTest < knowledgeTest.length) {
-                doQuiz(currentKnowledgeTest);                          // recursive function call
+                doQuiz(currentKnowledgeTest);                          // recursive function call (safe on 3 counts: inside for loop, clock stops quiz no matter what, once clicked the button gets destroyed)
             } else {
                 endQuiz();
             }
@@ -111,7 +111,7 @@ function endQuiz() {
     // stop the clock
     clearInterval(countdownClock);
     finalScore = secondsRemaining+(userScore*10);
-    // add 1 to second so the displayed score fits players mind with time remaining shown
+    // add 1 to second to final score shown to match players impression of score with time remaining
     finalScore = finalScore + 1;
     
     // clean up the page: remove current question, optional answers, feedback
@@ -146,6 +146,7 @@ function saveScore(userInitials, userScore) {
     };
 
     // push object into array
+    // bug to fix.......................
     quizScores.push(personsScore);
 
     // put updated data back into the local store
