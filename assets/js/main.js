@@ -144,6 +144,15 @@ function saveScore(userInitials, userScore) {
         score: userScore
     };
 
+    // a more advanced technique?  TODO: research this
+    // let results = [{country: 'France'},{country: 'Brazil'},{country: 'Dubai'},{country: 'Ireland'}];
+    // let result = {country: 'Brazil'};
+    // countryExist = results.some(obj => obj.country === result.country);
+    // if (!countryExist) {
+    // results.push(result);
+    // addToLocalStorage(results);
+    // }
+
     // if user has a previous score already stored save the highest of previous or current score
     var doPush = true;
     var index = 0;
