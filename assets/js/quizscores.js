@@ -29,8 +29,6 @@ function renderScores() {
 function clearScores() {
     window.localStorage.removeItem('quizScores');
     window.location.reload()
-    console.log('clear scores');
-    
 }
 
 window.onload = init;
@@ -48,5 +46,3 @@ clearScoresBtn.addEventListener('click', function(event) {
         clearScores();
     }
 });
-
-
