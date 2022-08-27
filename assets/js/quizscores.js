@@ -4,8 +4,6 @@
 var clearScoresBtn = window.document.getElementById('clear-highscores-button');
 
 function renderScores() {
-    console.log('highscores first');
-
     // retrieve saved scores into array or create empty array if none saved yet
     var quizScores = JSON.parse(window.localStorage.getItem('quizScores')) || [];
 
@@ -16,6 +14,10 @@ function renderScores() {
 
     // build ordered list of scores and show
     var olEl = document.getElementById("quiz-scores");
+
+    // make sure this element is clear of any previous lists but do not destroy it
+    olEl.innerHTML = '';
+
     for (let index = 0; index < quizScores.length; index++) {
         var liEl = document.createElement('li');
         liEl.textContent = quizScores[index].initials + '- ' + quizScores[index].score;

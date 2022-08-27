@@ -33,7 +33,6 @@ var allDoneSubmitBtn = document.getElementById('submit-button');
 
 function countdown() {
     countdownClock = setInterval(function () {
-        // console.log(secondsRemaining);
         if (secondsRemaining >= 1) {
             timerEl.textContent = secondsRemaining;
         } else if (secondsRemaining === 0 || secondsRemaining < 0) {
@@ -145,11 +144,34 @@ function saveScore(userInitials, userScore) {
         score: userScore
     };
 
-    // push object into array
-    // bug to fix.......................
-    quizScores.push(personsScore);
+    // if user has a previous score already stored save the highest of previous or current score
+    var doPush = true;
+    var index = 0;
+    while (index < quizScores.length) {
+        // find the previous record and update it
+        if (quizScores[index].initials === personsScore.initials) {
+            
+            // only record the highest score for this user
+            if (quizScores[index].score < personsScore.score) {
+                quizScores[index].score = personsScore.score;
+            } else {
+                // keep the old score if it is >= current score
+            }            
+            doPush = false;                 // do not create new record
+            index = quizScores.length;      // finish the while loop early
+        }
+        else {
+            // keep searching until all records have been traversed
+            index++;
+        }
+    }
+
+    // if previous loop did not find a previous score then add a new record
+    if (doPush) {quizScores.push(personsScore)};
 
     // put updated data back into the local store
+    // localStorage.quizScores.initials = personsScore.initials // from userInitials
+    // localStorage.quizScores.score = personsScore.score // from userScore
     window.localStorage.setItem('quizScores', JSON.stringify(quizScores));
 
     // jump to the scores page
