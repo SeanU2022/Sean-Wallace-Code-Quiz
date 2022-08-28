@@ -126,6 +126,11 @@ main {
   html {
     font-size: 40%;
   }
+  #quiz-question {
+    font-size: 1rem;
+  /* flex column means: TOP RIGHT BOTTOM LEFT */
+  padding: 1rem 5rem 0rem 4rem;
+}
 }
 
 /* quizscores.html */
