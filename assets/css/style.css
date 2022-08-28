@@ -117,14 +117,14 @@ main {
 /* Large smartphones */
 @media screen and (max-width: 768px) {
   html {
-    font-size: 70%;
+    font-size: 62.5%;
   }
 }
 
 /* Small smartphones */
 @media screen and (max-width: 576px) {
   html {
-    font-size: 80%;
+    font-size: 62.5%;
   }
 }
 
